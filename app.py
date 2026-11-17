@@ -79,12 +79,37 @@ class MicroAspersion:
 
 @app.route("/")
 def index():
-    return HTML
+    return send_from_directory(BASE_DIR, "INDEX.html")
+
+
+@app.route("/INDEX.html")
+def index_html():
+    return send_from_directory(BASE_DIR, "INDEX.html")
+
+
+@app.route("/HTML/<path:filename>")
+def html_files(filename):
+    return send_from_directory(os.path.join(BASE_DIR, "HTML"), filename)
+
+
+@app.route("/CSS/<path:filename>")
+def css_files(filename):
+    return send_from_directory(os.path.join(BASE_DIR, "CSS"), filename)
 
 
 @app.route("/script.js")
 def script():
     return send_from_directory(BASE_DIR, "script.js")
+
+
+@app.route("/simulador.js")
+def simulador_js():
+    return send_from_directory(BASE_DIR, "simulador.js")
+
+
+@app.route("/kaka.js")
+def kaka_js():
+    return send_from_directory(BASE_DIR, "kaka.js")
 
 
 @app.route("/api/calcular", methods=["POST"])
