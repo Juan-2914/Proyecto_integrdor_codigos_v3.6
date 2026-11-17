@@ -206,6 +206,11 @@ def estaticos_css(archivo):
     return send_from_directory(os.path.join(PROJECT_ROOT, "Vista", "CSS"), archivo)
 
 
+@app.route("/CSS/<path:archivo>")
+def estaticos_css_root(archivo):
+    return send_from_directory(os.path.join(PROJECT_ROOT, "Vista", "CSS"), archivo)
+
+
 @app.route("/Logica/JavaScript/<path:archivo>")
 def estaticos_js(archivo):
     return send_from_directory(os.path.join(PROJECT_ROOT, "Logica", "JavaScript"), archivo)
